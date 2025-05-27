@@ -26,7 +26,7 @@
 
 import crypto from 'crypto';
 import sendEmail from '../Utils/sendEmail.js';
-import Invite from '../models/Invite.js';
+import Invite from '../Models/Invite.js';
 
 exports.inviteUser = async (req, res) => {
     try {
