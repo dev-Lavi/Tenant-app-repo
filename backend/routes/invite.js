@@ -19,7 +19,7 @@
 import express from 'express';
 const router = express.Router();
 import inviteController from '../Controllers/Invitecontroller.js';
-import authMiddleware from '../Middleware/auth.js';
+import authMiddleware from '../Middleware/authmiddleware.js';
 import roleMiddleware from '../Middleware/roleMiddleware.js';
 
 router.post('/', authMiddleware, roleMiddleware(['Admin']), inviteController.inviteUser);

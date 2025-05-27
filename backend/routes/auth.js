@@ -4,7 +4,7 @@ import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import User from '../Models/User.js';
 import Organisation from '../Models/Organisations.js';
-import authMiddleware from '../Middleware/authMiddleware.js';
+import authMiddleware from '../Middleware/authmiddleware.js';
 
 router.post('/register', async (req, res) => {
     try {
