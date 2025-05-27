@@ -1,6 +1,6 @@
 // routes/dashboard.js
 import express from 'express';
-import authMiddleware from '../Middleware/authMiddleware.js';
+import authMiddleware from '../Middleware/authmiddleware.js';
 
 const router = express.Router();
 
