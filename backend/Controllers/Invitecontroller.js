@@ -24,9 +24,9 @@
 // };
 
 
-const crypto = require('crypto');
-const sendEmail = require('../Utils/sendEmail');
-const Invite = require('../models/Invite');
+import crypto from 'crypto';
+import sendEmail from '../Utils/sendEmail.js';
+import Invite from '../Models/Invite.js';
 
 exports.inviteUser = async (req, res) => {
     try {

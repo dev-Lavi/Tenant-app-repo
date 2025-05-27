@@ -1,6 +1,6 @@
-const Task = require('../models/Task');
+import Task from '../models/Task.js';
 
-exports.createTask = async (req, res) => {
+export const createTask = async (req, res) => {
     try {
         const { title, description, category, priority, dueDate, assignee } = req.body;
 
@@ -24,7 +24,7 @@ exports.createTask = async (req, res) => {
     }
 };
 
-exports.getTasks = async (req, res) => {
+export const getTasks = async (req, res) => {
     try {
         const tasks = await Task.find({ organization: req.user.organizationId }).populate('assignee', 'name email');
         res.json(tasks);
@@ -34,7 +34,7 @@ exports.getTasks = async (req, res) => {
     }
 };
 
-exports.updateTask = async (req, res) => {
+export const updateTask = async (req, res) => {
     try {
         const { id } = req.params;
         const updates = req.body;
@@ -56,7 +56,7 @@ exports.updateTask = async (req, res) => {
     }
 };
 
-exports.deleteTask = async (req, res) => {
+export const deleteTask = async (req, res) => {
     try {
         const { id } = req.params;
 
@@ -71,4 +71,4 @@ exports.deleteTask = async (req, res) => {
         console.error(err);
         res.status(500).json({ message : 'Server error' });
     }
-}; 
+};

@@ -1,9 +1,9 @@
-const express = require('express');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const User = require('../Models/User');
-const Organisation = require('../Models/Organisations');
+import express from 'express';
 const router = express.Router();
+import bcrypt from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import User from '../Models/User.js';
+import Organisation from '../Models/Organisations.js';
 
 router.post('/register', async (req, res) => {
     try {
@@ -100,4 +100,4 @@ router.post('/login', async (req, res) => {
 
 
 
-module.exports = router;
+export default router;

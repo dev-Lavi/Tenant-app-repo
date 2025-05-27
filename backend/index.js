@@ -1,42 +1,36 @@
-// const express = require('express');
-// const mongoose = require('mongoose');
-// const cors = require('cors');
-// require('dotenv').config();
+import express from 'express';
+import cors from 'cors';
+import mongoose from 'mongoose';
+import dotenv from 'dotenv';
 
-// const app = express();
-// app.use(cors());
-// app.use(express.json());
+import taskExpiryJob from './Cron/taskExpiry.js';
+import dashboardRoutes from './routes/dashboard.js';
+import authRoutes from './routes/auth.js';
+import tasksRoutes from './routes/tasks.js';
 
-// const PORT = process.env.PORT || 5000;
-
-// mongoose.connect(process.env.MONGODB_URI, { UseNewUrlParser: true, UseUnifiedTopology: true })
-//     .then(() => console.log('MongoDB connected'))
-//     .catch(err => console.error('MongoDB connection error:', err));
-
-// app.use('/api/auth', require('./routes/auth'));
-// app.use('api/tasks', require('./routes/tasks')); 
-
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-const taskExpiryJob = require('./Cron/taskExpiry');
-const dashboardRoutes = require('./routes/dashboard');
-
-
-require('dotenv').config();
+dotenv.config();
 
 const app = express();
-app.use(cors()); 
+
+app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGO_URI)
-.then(() => console.log('MongoDB connected'))
-.catch(err => console.error('MongoDB connection error:', err));
+// Connect to MongoDB
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+  .then(() => console.log('MongoDB connected'))
+  .catch(err => console.error('MongoDB connection error:', err));
 
-app.use('/api/auth', require('./routes/auth'));
-app.use('/api/tasks', require('./routes/tasks'));
+// Routes
+app.use('/api/auth', authRoutes);
+app.use('/api/tasks', tasksRoutes);
 app.use('/dashboard', dashboardRoutes);
 
+// Start cron job
 taskExpiryJob();
 
-app.listen(5000, () => console.log('Server running on port 5000'));
+// Start server
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

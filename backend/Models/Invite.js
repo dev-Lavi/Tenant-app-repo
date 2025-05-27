@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const inviteSchema = new mongoose.Schema({
   email: { type: String, required: true },
