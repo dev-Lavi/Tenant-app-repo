@@ -1,5 +1,5 @@
 import cron from 'node-cron';
-import Task from '../models/Task.js';
+import Task from '../models/task.js';
 
 const taskExpiryJob = () => {
   cron.schedule('0 * * * *', async () => {
