@@ -1,4 +1,4 @@
-import Task from '../models/tempp.js';
+import Task from '../Models/Task.js';
 
 export const createTask = async (req, res) => {
     try {

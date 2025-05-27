@@ -1,5 +1,5 @@
 import cron from 'node-cron';
-console.log('Cron job for task expiry started');
+import Task from '../Models/Task.js';
 const taskExpiryJob = () => {
   cron.schedule('0 * * * *', async () => {
     try {

@@ -2,8 +2,9 @@ import express from 'express';
 const router = express.Router();
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
-import User from '../models/User.js';
-import Organisation from '../models/Organisations.js';
+import User from '../Models/User.js';
+import Organisation from '../Models/Organisations.js';
+import authMiddleware from '../Middleware/authMiddleware.js';
 
 router.post('/register', async (req, res) => {
     try {

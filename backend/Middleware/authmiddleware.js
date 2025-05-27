@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 
-const auth = (roles = []) => {
+const authMiddleware = (roles = []) => {
   return (req, res, next) => {
     const token = req.header('Authorization')?.replace('Bearer ', '');
     if (!token) return res.status(401).json({ message: 'No token, authorization denied' });
@@ -21,4 +21,4 @@ const auth = (roles = []) => {
   };
 };
 
-export default authmiddleware;
+export default authMiddleware;
