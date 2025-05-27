@@ -2,7 +2,7 @@
 import express from 'express';
 
 const router = express.Router();
-import authMiddleware from '../middleware/authMiddleware.js';
+import authMiddleware from '../middleware/auth.js';
 
 router.get('/', authMiddleware, (req, res) => {
   // Example response
